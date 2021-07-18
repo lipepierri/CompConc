@@ -1,5 +1,5 @@
 # CompConc
-Trabalhos da Silvana CC UFRJ 21.1
+Trabalhos da Silvana BCC UFRJ 21.1
 
 ## Compilando...
 Você pode abrir a Powershell com esse comando:
