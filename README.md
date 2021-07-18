@@ -1,9 +1,9 @@
-# CompConc
-Trabalhos da Silvana BCC UFRJ 21.1
+<div align="center"> 
+  <h1>CompConc - Trabalhos da Silvana BCC UFRJ 21.1</h1>
+  <img src="/Imagens/logo.png" width="300"/>
+ </div>
 
-<img src="/Imagens/logo.png" width="500" />
-
-## Compilando...
+### Compilando...
 Você pode abrir a Powershell com esse comando:
 
 ```Powershell
