@@ -1,6 +1,8 @@
 # CompConc
 Trabalhos da Silvana BCC UFRJ 21.1
 
+<img src="/Imagens/logo.png" width="1080" />
+
 ## Compilando...
 Você pode abrir a Powershell com esse comando:
 
