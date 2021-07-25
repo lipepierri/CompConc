@@ -96,14 +96,15 @@ int main(int argc, char* argv[]) {
   }
 
   //Definindo divisão em blocos para as threads
-  float temp1=1;
-  float temp2=1;
+  float temp1=0;
+  float temp2=0;
   for(i=1; i<(nThreads+1); i++){
     if (i==nThreads){
       divide[i-1]=temp2;
       //printf("temp2: %f\n", temp2);
       //printf("divide: %d\n", divide[i-1]);
       divide[i]= dim;
+      //printf("divide+1: %d\n", divide[i]);
     }
     else {
       temp1=(dim/nThreads)*(i-1);
