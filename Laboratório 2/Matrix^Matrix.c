@@ -55,7 +55,7 @@ int main(int argc, char* argv[]) {
   dim = atoi(argv[2]);
 
   while (nThreads > dim) {
-    printf("ERROR--nThreads precisa ser <= a dimensao das matrizes.\nPasse-os por linha de comando!\n");
+    printf("ERRO--nThreads precisa ser <= a dimensao das matrizes.\nPasse-os por linha de comando!\n");
     return 2;
   }
 
@@ -74,13 +74,13 @@ int main(int argc, char* argv[]) {
 
   secondMatrix = malloc(sizeof(float) * dim * dim);
   if (secondMatrix == NULL) {
-    printf("ERROR--malloc\n");
+    printf("ERRO--malloc\n");
     return 2;
   }
 
   resultMatrix = malloc(sizeof(float) * dim * dim);
   if (resultMatrix == NULL) {
-    printf("ERROR--malloc\n");
+    printf("ERRO--malloc\n");
     return 2;
   }
 
@@ -122,13 +122,13 @@ int main(int argc, char* argv[]) {
   GET_TIME(init);
   tid = (pthread_t*) malloc(sizeof(pthread_t)*nThreads);
   if (tid==NULL) {
-    puts("ERROR--malloc");
+    puts("ERRO--malloc");
     return 2;  
   }
 
   args = (tArgs*) malloc(sizeof(tArgs)*nThreads);
   if (args==NULL) {
-    puts("ERROR--malloc");
+    puts("ERRO--malloc");
     return 2;  
   }
 
@@ -137,7 +137,7 @@ int main(int argc, char* argv[]) {
     (args+i)->id = i;
     (args+i)->dim = dim;
     if (pthread_create(tid+i, NULL, multiplying, (void*) (args+i))) {
-      puts("ERROR--pthread_create");
+      puts("ERRO--pthread_create");
       return 3;
     }
   }
@@ -145,7 +145,7 @@ int main(int argc, char* argv[]) {
   //Espera as threads acabarem
   for(i = 0; i < nThreads; i++) {
     if (pthread_join(*(tid+i), NULL)) {
-      puts("ERROR--pthread_join");
+      puts("ERRO--pthread_join");
       return 3;
     }
   }
@@ -165,7 +165,7 @@ int main(int argc, char* argv[]) {
   for(i = 0; i < dim; i++) {
      for(j = 0; j < dim; j++) {
       if (resultMatrix[i*dim+j] != 4*dim) {
-        puts("ERROR--Validacao");
+        puts("ERRO--Validacao");
         return 4;
       };
     }
