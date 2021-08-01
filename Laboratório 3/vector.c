@@ -8,15 +8,15 @@ float MAXC; // variavel global que aloca o maior valor da func concorrente
 float MINC; // variavel global que aloca o menor valor da func concorrente
 float MAXS; // variavel global que aloca o maior valor da func sequencial
 float MINS; // variavel global que aloca o menor valor da func sequencial
-float *vector; // vetor
-int *divide;
+float *vector; // vetor principal
+int *divide; // vetor de dividir o trabalho das threads
 
 typedef struct {
   int id; // id local das threads
   long long int N; // dimensao do vetor
 } tArgs;
 
-// funcao de multiplicar
+// funcao de achar max e min concorrente
 void * maxMinDetectConc(void *arg) {
   tArgs *args = (tArgs*) arg;
 
