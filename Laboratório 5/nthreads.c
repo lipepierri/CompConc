@@ -8,12 +8,11 @@ int nThreads;
 int cont;
 int* vector;
 int* vectorSum;
-
 pthread_mutex_t plock;
 pthread_cond_t pcond;
 
 
-// função executada pelas threads
+// função concorrente
 void *tarefa(void *arg) {
   int localId = (int) arg;
   int aux1 = 0;
@@ -65,15 +64,15 @@ int main(int argc, char *argv[]) {
   N = atoll(argv[1]);
   nThreads = N;
 
-  // ALOCAÇÃO DE ESPAÇO
-  // vetor de Threads
+  // Alocando memória...
+  // Threads
   tid = (pthread_t *)malloc(sizeof(pthread_t) * nThreads);
 	if (tid == NULL) {
 		printf("ERRO--malloc\n");
 		return 2;
 	}
 
-  //vetor
+  // Vetor
   vector = malloc(N * sizeof(int *));
 	if (vector == NULL) {
 		printf("ERROR--malloc\n");
@@ -87,13 +86,13 @@ int main(int argc, char *argv[]) {
 		return 2;
 	}
 
-  // GERAÇÃO DO vector
+  // Inserindo números aleatórios no vetor entre 0 e 9
   for (int i = 0; i < N; i++) {
-		int aux = rand() % 10; // numeros aleatorios entre 0 e 9
+		int aux = rand() % 10;
 		vector[i] = aux;
 	}
 
-  // EXECUÇÃO
+  // Criação e execução das threads
   for (int i = 0; i < nThreads; i++) {
 		if (pthread_create(tid + i, NULL, tarefa, (void *) i)) {
 			printf("ERRO--pthread_create\n");
@@ -108,17 +107,18 @@ int main(int argc, char *argv[]) {
 		}
 	}
 
-  // VALIDAÇÃO
+  // Função de verificação
   for (int i = 0; i < N; i++) {
      printf("Thread %d somou: %d\n", i, vectorSum[i]);
      if(vectorSum[0] != vectorSum[i]){
-        printf("\nERRO--Validação: \n\n");
+        printf("\nERRO--Verificacao: Thread %d somou errado!\n\n", i);
 			  return 4;
      }
   }
 
-  printf("\nA execução passou na validação\n\n");
+  printf("\nO programa foi aprovado pela função de verificacao!\n\n");
 
+  //Liberando espaço na memória
   free(vector);
   free(vectorSum);
   pthread_mutex_destroy(&plock);
