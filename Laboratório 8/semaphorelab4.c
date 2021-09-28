@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
   int i; 
   pthread_t threads[NTHREADS];
 
-  /* Inicilaiza o mutex (lock de exclusao mutua) e a variavel de condicao */
+  /* Inicilaiza o semaforo */
   sem_init(&em, 0, 0);
   sem_init(&step, 0, 0);
 
